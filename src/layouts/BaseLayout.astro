@@ -1,0 +1,67 @@
+---
+import "../styles/globals.css";
+import RevealScript from "../components/RevealScript.astro";
+import { site } from "../data/site";
+import SocialLinks from "../components/SocialLinks.astro";
+const { title = 'Portfolio', description = 'Software Engineer', } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <script type="application/ld+json">
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: site.name,
+        jobTitle: site.role,
+        url: Astro.site?.origin ?? 'https://example.com',
+      })}
+    </script>
+    <script is:inline>
+      // Prevent flash of wrong theme: set .dark early based on saved or system
+      (function(){
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var defaultDark = ${JSON.stringify(true)}; // site.theme.default === 'dark'
+          var dark = saved ? saved === 'dark' : (defaultDark || prefersDark);
+          if (dark) document.documentElement.classList.add('dark');
+        } catch(e) {}
+      })();
+    </script>
+  </head>
+  <body class="font-sans antialiased">
+    <header class="sticky top-0 z-50 backdrop-blur border-b border-white/10" style="background: color-mix(in oklab, var(--bg) 85%, transparent)">
+      <nav class="container flex items-center justify-between h-14">
+  <a href="#top" class="font-semibold tracking-tight">{site.name}</a>
+        <div class="flex items-center gap-4 text-sm text-muted">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <SocialLinks />
+        </div>
+      </nav>
+    </header>
+    <main id="top" class="container">
+      <slot />
+    </main>
+    <footer class="border-t border-white/10 mt-16">
+  <div class="container py-8 text-sm text-muted flex items-center justify-between">
+  <span>© {new Date().getFullYear()} {site.name}</span>
+        <div class="flex items-center gap-4">
+          <SocialLinks />
+          <a class="hover:text-white" href="/resume" rel="noopener">Resume</a>
+        </div>
+      </div>
+    </footer>
+  <RevealScript />
+  </body>
+</html>

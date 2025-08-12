@@ -1,0 +1,17 @@
+---
+import type { SkillCategories } from "../data/skills";
+const { skills } = Astro.props as { skills: SkillCategories };
+---
+<section class="py-16" aria-labelledby="skills" data-reveal>
+  <h2 id="skills" class="text-xl font-semibold text-fg">{skills.title ?? 'Skills'}</h2>
+  <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {skills.groups.map((g) => (
+  <article class="p-5 card">
+        <h3 class="font-medium text-fg">{g.label}</h3>
+        <div class="mt-3 flex gap-2 text-xs text-muted flex-wrap">
+          {g.items.map((item) => (<span class="chip">{item}</span>))}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

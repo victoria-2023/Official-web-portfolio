@@ -1,0 +1,15 @@
+---
+---
+<script is:inline type="module">
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    import('@motionone/dom').then(({ animate, inView }) => {
+      document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+        el.style.opacity = '0';
+        inView(el, () => {
+          animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: 0.6, delay: i * 0.05, easing: 'ease-out' });
+        }, { margin: '0px 0px -20% 0px', once: true });
+      });
+    });
+  }
+</script>

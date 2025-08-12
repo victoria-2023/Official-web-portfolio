@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { site } from "../data/site";
+import { experience } from "../data/experience";
+import { projects } from "../data/projects";
+import ExperienceItem from "../components/ExperienceItem.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SkillsGrid from "../components/SkillsGrid.astro";
+import { skills } from "../data/skills";
+import ContactForm from "../components/ContactForm.astro";
+---
+<BaseLayout title="Portfolio" description="Software Engineer">
+  <Hero name={site.name} role={site.role} avatar={site.avatar ?? '/favicon.svg'} location={site.location} email={site.email} phone={site.phone} />
+
+  <section class="py-16 text-center" aria-labelledby="about" data-reveal>
+    <SectionHeading id="about" label="About" />
+    <div class="text-fg/90 max-w-2xl space-y-4 mx-auto text-left">
+      <p>I’m a software engineer who enjoys turning ideas into reliable, thoughtfully designed products. Beyond interfaces, I work across the stack, shaping APIs, wiring data flows, automating workflows, and tightening performance, accessibility, and test coverage so things feel fast and dependable.</p>
+      <p>I care about clear UX, maintainable code, and measurable impact. Recently I’ve been refining my skills around modern frontend tooling, backend services in Python/Java, and pragmatic DevOps on platforms like Vercel and Render, always with an eye for readable code and a smooth developer experience.</p>
+    </div>
+  </section>
+
+  <section class="py-16" aria-labelledby="experience" data-reveal>
+    <SectionHeading id="experience" label="Experience" />
+    <ul class="space-y-6">
+      {experience.map((item) => <ExperienceItem item={item} />)}
+    </ul>
+  </section>
+
+  <SkillsGrid skills={skills} />
+
+  <section class="py-16" aria-labelledby="projects" data-reveal>
+    <SectionHeading id="projects" label="Projects" />
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <ContactForm />
+</BaseLayout>

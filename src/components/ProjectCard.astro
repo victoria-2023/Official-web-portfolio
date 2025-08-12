@@ -1,0 +1,12 @@
+---
+import type { Project } from '../data/projects';
+const { project } = Astro.props as { project: Project };
+---
+<article class="p-5 card" data-reveal>
+  <h3 class="font-semibold text-fg">{project.name}</h3>
+  <p class="text-sm mt-1 text-muted">{project.blurb}</p>
+  <div class="mt-3 flex gap-2 text-xs text-muted flex-wrap">
+    {project.stack.map(s => <span class="chip">{s}</span>)}
+  </div>
+  {project.href && <a href={project.href} class="inline-block mt-3 text-sm underline decoration-dotted underline-offset-4">View</a>}
+</article>

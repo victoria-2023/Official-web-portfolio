@@ -1,0 +1,32 @@
+---
+const { name = 'Your Name', role = 'Software Engineer', blurb = 'I design and build reliable full stack software applications, big or small...', avatar = '/favicon.svg', location, email, phone } = Astro.props;
+---
+<section class="min-h-[62vh] grid place-items-center py-12">
+  <div class="grid md:grid-cols-[1fr,320px] gap-10 items-center">
+    <div>
+  <p class="text-sm text-muted">{role}</p>
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mt-2">
+        <span class="text-gradient">{name}</span>
+      </h1>
+  <p class="mt-4 text-fg/90 max-w-prose">{blurb}</p>
+      {(location || email || phone) && (
+  <p class="mt-2 text-muted text-sm">
+          {location && <span>{location}</span>}
+          {(location && (email || phone)) && <span class="mx-2">•</span>}
+          {email && <a class="underline decoration-dotted underline-offset-4" href={`mailto:${email}`}>{email}</a>}
+          {(email && phone) && <span class="mx-2">•</span>}
+          {phone && <a class="underline decoration-dotted underline-offset-4" href={`tel:${phone.replace(/\s+/g,'')}`}>{phone}</a>}
+        </p>
+      )}
+      <div class="mt-6 flex gap-3">
+        <a href="#projects" class="px-4 py-2 rounded bg-accent-gradient text-white">View Projects</a>
+        <a href="#contact" class="px-4 py-2 rounded border border-white/10 hover:border-white/30">Contact</a>
+      </div>
+    </div>
+    <div class="justify-self-center md:justify-self-end">
+      <div class="w-48 h-48 md:w-64 md:h-64 rounded-full ring-2 ring-white/10 overflow-hidden">
+        <img src={avatar} alt={`${name} profile photo`} class="w-full h-full object-cover scale-105" />
+      </div>
+    </div>
+  </div>
+</section>

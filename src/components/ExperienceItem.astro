@@ -1,0 +1,21 @@
+---
+import type { ExperienceItem } from '../data/experience';
+const { item } = Astro.props as { item: ExperienceItem };
+---
+<li class="p-5 card" data-reveal>
+  <div class="flex items-start justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded flex items-center justify-center text-sm font-semibold chip" style="height:2.5rem;width:2.5rem;">
+        {item.company.slice(0,2)}
+      </div>
+      <div>
+        <div class="font-semibold text-fg">{item.role}</div>
+        <div class="text-muted text-sm">{item.company}</div>
+      </div>
+    </div>
+    <span class="text-xs sm:text-sm text-muted whitespace-nowrap">{item.start} — {item.end}</span>
+  </div>
+  <ul class="mt-3 space-y-1 text-fg/90 list-disc pl-5">
+    {item.bullets.map((b) => <li>{b}</li>)}
+  </ul>
+</li>
