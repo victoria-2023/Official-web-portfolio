@@ -9,13 +9,13 @@ export const projects: Project[] = [
   {
     name: 'Betting Game',
     blurb: 'Interactive betting game with dynamic odds and user scoring.',
-    stack: ['React', 'Node'],
+  stack: ['React', 'Node', 'Java'],
     href: 'https://betting-game-lva6.onrender.com/',
   },
   {
     name: 'Weather Dashboard',
     blurb: 'Responsive weather dashboard with real-time conditions and forecasts.',
-    stack: ['React', 'API'],
+  stack: ['React', 'JavaScript', 'API'],
     href: 'https://weather-dashboard-official.netlify.app/',
   },
   {
