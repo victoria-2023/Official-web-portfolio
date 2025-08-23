@@ -7,6 +7,12 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: 'Official Web Portfolio',
+    blurb: 'Personal portfolio site built with Astro, Tailwind CSS, and TypeScript. Features projects, skills, contact form, and more.',
+    stack: ['Astro', 'Tailwind CSS', 'TypeScript', 'Vercel'],
+    href: 'https://github.com/victoria-2023/Official-web-portfolio',
+  },
+  {
     name: 'Betting Game',
     blurb: 'Interactive betting game with dynamic odds and user scoring.',
   stack: ['React', 'Node', 'Java'],
@@ -23,5 +29,11 @@ export const projects: Project[] = [
   blurb: 'Paste a URL to generate a rich preview card from Open Graph/Twitter metadata.',
   stack: ['HTML', 'CSS', 'JS', 'Open Graph'],
     href: 'https://luminous-fenglisu-c8e58b.netlify.app/',
+  },
+  {
+    name: 'Smart Home Energy Forecasting',
+    blurb: 'Machine learning project for predicting energy usage in smart homes.',
+    stack: ['Python', 'Machine Learning', 'Data Science'],
+    href: 'https://github.com/victoria-2023/smart-home-energy-forecasting',
   },
 ];

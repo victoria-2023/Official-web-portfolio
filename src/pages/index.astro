@@ -7,6 +7,7 @@ import { experience } from "../data/experience";
 import { projects } from "../data/projects";
 import ExperienceItem from "../components/ExperienceItem.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import FeaturedLinks from "../components/FeaturedLinks.astro";
 import SkillsGrid from "../components/SkillsGrid.astro";
 import { skills } from "../data/skills";
 import ContactForm from "../components/ContactForm.astro";
@@ -30,6 +31,8 @@ import ContactForm from "../components/ContactForm.astro";
   </section>
 
   <SkillsGrid skills={skills} />
+
+  <FeaturedLinks />
 
   <section class="py-16" aria-labelledby="projects" data-reveal>
     <SectionHeading id="projects" label="Projects" />
