@@ -1,16 +1,36 @@
 ---
 import { featuredLinks } from '../data/featuredLinks';
+const mediumProfile = 'https://medium.com/@victoria_ude.dev';
 ---
-<section class="featured-links mx-auto my-8 max-w-xl text-center">
-  <h2 class="text-2xl font-bold mb-4">Featured</h2>
-  <ul>
+<section class="featured-links mx-auto my-12 max-w-5xl" data-reveal>
+  <div class="relative">
+    <h2 class="absolute left-[calc(50%-14rem)] -top-10 text-2xl font-bold">Featured</h2>
+    <a href={mediumProfile} target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 px-4 py-3 rounded bg-fuchsia-600 text-white text-base font-semibold hover:bg-fuchsia-700 transition shadow-sm absolute right-0 top-1/2 -translate-y-1/2">
+      More articles on Medium
+      <span aria-hidden="true">→</span>
+    </a>
+    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     {featuredLinks.map(link => (
-      <li class="mb-4">
-        <a href={link.href} target="_blank" rel="noopener" class="inline-block px-4 py-2 rounded bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700 transition">
-          {link.name}
-        </a>
-        <div class="text-muted mt-1">{link.blurb}</div>
-      </li>
+      <article class="p-5 card h-full flex flex-col" data-reveal>
+        {link.image && (
+          <img
+            src={link.image}
+            alt={link.imageAlt ?? link.name}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-36 object-cover rounded-md mb-3 ring-1 ring-white/10 transition-transform duration-300 hover:scale-[1.02]"
+          />
+        )}
+        <div class="flex-1">
+          <h3 class="font-semibold text-fg">
+            <a href={link.href} target="_blank" rel="noopener" class="hover:underline underline-offset-4">{link.name}</a>
+          </h3>
+          <p class="text-sm mt-2 text-muted">{link.blurb}</p>
+        </div>
+        <a href={link.href} target="_blank" rel="noopener" class="mt-4 inline-block px-3 py-2 rounded bg-fuchsia-600 text-white text-sm font-semibold hover:bg-fuchsia-700 transition">Read</a>
+      </article>
     ))}
-  </ul>
+    </div>
+  </div>
+  
 </section>

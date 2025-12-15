@@ -79,3 +79,16 @@ h2{ letter-spacing: -0.01em; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Simple reveal-on-scroll utility used by RevealScript */
+.reveal-init{
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  filter: blur(4px);
+  transition: opacity .7s ease-out, transform .7s ease-out, filter .7s ease-out;
+}
+.reveal-in{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}

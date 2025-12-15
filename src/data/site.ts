@@ -1,9 +1,9 @@
 export const site = {
   name: 'Victoria Ude',
-  role: 'Software Engineer',
+  role: 'Software Developer - AI/ML Engineer',
   email: 'victoriamarachi2001@gmail.com',
-  phone: '+372 5352 4550',
-  location: 'Tallinn, Estonia',
+  phone: '+2347084162477',
+  location: '',
   avatar: '/WhatsApp Image 2025-07-30 at 20.02.45_e6f7560c.jpg',
   socials: {
     github: 'https://github.com/victoria-2023',
